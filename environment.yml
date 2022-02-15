@@ -13,7 +13,6 @@ dependencies:
     -   pingouin
     -   cython
     -   opencv
-    -   moviepy
     -   pip
     -   pip:
             -   cffi_magic
