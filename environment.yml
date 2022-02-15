@@ -12,8 +12,9 @@ dependencies:
     -   seaborn
     -   pingouin
     -   cython
-    -   opencv
     -   pip
     -   pip:
             -   cffi_magic
+            -   opencv-python
+            -   moviepy
     
