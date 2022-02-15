@@ -1,4 +1,6 @@
 vim
 curl
 wget
+imagemagick
 python3-opencv
+
