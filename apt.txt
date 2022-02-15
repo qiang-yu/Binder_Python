@@ -1,1 +1,4 @@
+vim
+curl
+wget
 python3-opencv
