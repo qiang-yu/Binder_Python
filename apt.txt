@@ -1,4 +1,4 @@
-dropbear
+dropbear-bin
 openssh-sftp-server
 tmux
 vim
