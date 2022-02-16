@@ -6,3 +6,4 @@ p7zip-full
 openssh-server
 imagemagick
 python3-opencv
+ffmpeg
