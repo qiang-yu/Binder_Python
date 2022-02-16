@@ -3,6 +3,8 @@ vim
 curl
 wget
 bash
+net-tools
+lrzsz
 p7zip-full
 openssh-server
 imagemagick
