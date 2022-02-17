@@ -6,6 +6,9 @@ curl
 wget
 bash
 net-tools
+iputils-ping
+telnet
+sudo
 lrzsz
 p7zip-full
 imagemagick
