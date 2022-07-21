@@ -19,5 +19,5 @@ x11vnc
 jwm
 fonts-wqy-zenhei
 fonts-wqy-microhei
-chromium
+chromium-bsu
 chromium-chromedriver
