@@ -7,12 +7,9 @@ test -e test.png && rm test.png
 cat <<EOT >> $HOME/startXWindow
 #!/bin/bash
 
-# remove cron
-# crontab -l | sed '/onceCronJob/d'  | crontab -u ${USER} -
-
 ps aux  | grep Xvfb
 
-if [ $? -ne 0 ]
+if [ \$? -ne 0 ]
 then
 	/usr/bin/Xvfb :0 -ac -screen 0 1280x960x24 &
 	/usr/bin/x11vnc -noxdamage -forever -shared -display :0 -passwd 123456 &
