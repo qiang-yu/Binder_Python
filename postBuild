@@ -8,10 +8,29 @@ test -e test.png && rm test.png
 # jupyter labextension install @jupyterlab/latex
 
 # start xwindow
-echo "export DISPLAY=:0" >> $HOME/.bashrc
+echo "export DISPLAY=:0" >> /etc/profile
 
-echo "#!/bin/bash" > $HOME/startXWindow
-echo "'/usr/bin/Xvfb :0 -ac -screen 0 1280x960x24 &" >> $HOME/startXWindow
-echo "x11vnc -noxdamage -forever -shared -display :0 -passwd 123456 &" >> $HOME/startXWindow
-echo "LANG=en_US.UTF-8 /usr/bin/jwm -display :0 &" >> $HOME/startXWindow
-chmod a+x $HOME/startXWindow
+echo "#!/bin/bash" > /etc/rc.local
+echo "'/usr/bin/Xvfb :0 -ac -screen 0 1280x960x24 &" >> /etc/rc.local
+echo "x11vnc -noxdamage -forever -shared -display :0 -passwd 123456 &" >> /etc/rc.local
+echo "LANG=en_US.UTF-8 /usr/bin/jwm -display :0 &" >> /etc/rc.local
+chmod a+x /etc/rc.local
+
+cat <<EOT >> /etc/systemd/system/rc-local.service
+[Unit]
+ Description=/etc/rc.local Compatibility
+ ConditionPathExists=/etc/rc.local
+
+[Service]
+ Type=forking
+ ExecStart=/etc/rc.local start
+ TimeoutSec=0
+ StandardOutput=tty
+ RemainAfterExit=yes
+ SysVStartPriority=99
+
+[Install]
+ WantedBy=multi-user.target
+EOT
+
+systemctl enable rc-local
