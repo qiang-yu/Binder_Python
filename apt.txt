@@ -1,3 +1,4 @@
+cron
 dropbear-bin
 openssh-sftp-server
 tmux
