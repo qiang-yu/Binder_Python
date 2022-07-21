@@ -14,3 +14,10 @@ p7zip-full
 imagemagick
 python3-opencv
 ffmpeg
+xvfb
+x11vnc
+jwm
+fonts-wqy-zenhei
+fonts-wqy-microhei
+chromium
+chromium-chromedriver

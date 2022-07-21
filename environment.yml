@@ -15,6 +15,12 @@ dependencies:
     -   pip
     -   pip:
             -   cffi_magic
-            -   opencv-python
+            -   opencv-contrib-python
             -   moviepy
+            -   pygame
+            -   pillow
+            -   concurrent-log-handler
+            -   openpyxl
+            -   requests
+            -   selenium
     

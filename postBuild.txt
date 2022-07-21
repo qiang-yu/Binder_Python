@@ -1,10 +1,36 @@
 #!/bin/bash
 
-pip3 install openpyxl
-
 # run matplotlib once to generate the font cache
 python3 -c "import matplotlib as mpl; mpl.use('Agg'); import pylab as plt; fig, ax = plt.subplots(); fig.savefig('test.png')"
 test -e test.png && rm test.png
 
 # install JupyterLab extension
 # jupyter labextension install @jupyterlab/latex
+
+# start xwindow
+echo "export DISPLAY=:2" >> /etc/profile
+
+echo "#!/bin/sh" > /etc/rc.local
+echo "'/usr/bin/Xvfb :2 -ac -screen 2 1280x960x24 &" >> /etc/rc.local
+echo "x11vnc -noxdamage -forever -shared -display :2 -passwd 123456 &" >> /etc/rc.local
+echo "LANG=en_US.UTF-8 /usr/bin/jwm -display :2 &" >> /etc/rc.local
+chmod a+x /etc/rc.local 
+
+cat <<EOT >> /etc/systemd/system/rc-local.service
+[Unit]
+ Description=/etc/rc.local Compatibility
+ ConditionPathExists=/etc/rc.local
+
+[Service]
+ Type=forking
+ ExecStart=/etc/rc.local start
+ TimeoutSec=0
+ StandardOutput=tty
+ RemainAfterExit=yes
+ SysVStartPriority=99
+
+[Install]
+ WantedBy=multi-user.target
+EOT
+
+systemctl enable rc-local
