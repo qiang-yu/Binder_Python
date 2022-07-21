@@ -4,7 +4,12 @@
 python3 -c "import matplotlib as mpl; mpl.use('Agg'); import pylab as plt; fig, ax = plt.subplots(); fig.savefig('test.png')"
 test -e test.png && rm test.png
 
-cat <<EOT >> $HOME/onceCronJob
+cat <<EOT >> $HOME/startXWindow
+#!/bin/bash
+
+# remove cron
+# crontab -l | sed '/onceCronJob/d'  | crontab -u ${USER} -
+
 ps aux  | grep Xvfb
 
 if [ $? -ne 0 ]
@@ -12,18 +17,15 @@ then
 	/usr/bin/Xvfb :0 -ac -screen 0 1280x960x24 &
 	/usr/bin/x11vnc -noxdamage -forever -shared -display :0 -passwd 123456 &
 	LANG=en_US.UTF-8 /usr/bin/jwm -display :0 &
-	# remove cron
-	crontab -l | sed '/onceCronJob/d'  | crontab -u jovyan -
 fi
 EOT
-echo a+x $HOME/onceCronJob
+chmod a+x $HOME/startXWindow
 
 # add crontab
-line="1 * * * * ${HOME}/onceCronJob"
-(crontab -l; echo "$line" ) | crontab -u jovyan -
+# line="1 * * * * ${HOME}/startXWindow"
+# (crontab -l; echo "$line" ) | crontab -u ${USER} -
 
 echo "export DISPLAY=:0" >> $HOME/.bashrc 
 
 # install JupyterLab extension
 # jupyter labextension install @jupyterlab/latex
-
