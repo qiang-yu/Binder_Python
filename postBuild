@@ -26,3 +26,6 @@ echo "export DISPLAY=:0" >> $HOME/.bashrc
 
 # install JupyterLab extension
 # jupyter labextension install @jupyterlab/latex
+
+jupyter contrib nbextension install --user
+jupyter nbextensions_configurator enable --user
