@@ -7,7 +7,7 @@ test -e test.png && rm test.png
 cat <<EOT >> $HOME/startXWindow
 #!/bin/bash
 
-ps aux  | grep Xvfb
+ps aux  | sed "/grep/d" | grep Xvfb
 
 if [ \$? -ne 0 ]
 then
