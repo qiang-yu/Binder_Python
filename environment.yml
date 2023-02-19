@@ -61,10 +61,7 @@ dependencies:
             -   idna
             -   imageio
             -   importlib-metadata
-            -   ipympl
-            -   ipywidgets
             -   jedi
-            -   Jinja2
             -   joblib
             -   json5
             -   jsonschema
@@ -76,11 +73,7 @@ dependencies:
             -   mistune
             -   mpmath
             -   msgpack
-            -   nbconvert
-            -   nbformat
             -   networkx
-            -   notebook
-            -   numba
             -   numexpr
             -   oauthlib
             -   olefile
@@ -94,10 +87,7 @@ dependencies:
             -   pexpect
             -   pickleshare
             -   Pillow
-            -   prometheus-client
-            -   prompt-toolkit
             -   protobuf
-            -   psutil
             -   ptyprocess
             -   pycosat
             -   pycparser
@@ -109,7 +99,6 @@ dependencies:
             -   pyrsistent
             -   PySocks
             -   python-dateutil
-            -   python-editor
             -   python-json-logger
             -   pytz
             -   PyWavelets
@@ -141,8 +130,6 @@ dependencies:
             -   vincent
             -   wcwidth
             -   webencodings
-            -   widgetsnbextension
             -   xlrd
             -   zict
-            -   zipp
-    
+            -   zipp           
